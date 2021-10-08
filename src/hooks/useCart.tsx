@@ -16,7 +16,15 @@ interface CartProviderProps {
 
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
-    const [cart, setCart] = useState<Shoe[]>([]);
+    const [cart, setCart] = useState<Shoe[]>(() => {
+        const storagedCart = localStorage.getItem('@PumaShoes:cart');
+
+        if (storagedCart) {
+            return JSON.parse(storagedCart);
+        }
+
+        return [];
+    });
 
     async function addShoesCart(shoesId: number) {
 
@@ -29,19 +37,19 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
                 const { amount } = response.data[0];
                 return amount;
             })
-            
+
             const stockAmount = stock;
-
             const currentAmount = shoeExists ? shoeExists.amount : 0;
-            console.log("🚀 ~ file: useCart.tsx ~ line 36 ~ addShoesCart ~ currentAmount", currentAmount)
-            const amount = currentAmount + 1;
-            console.log("🚀 ~ file: useCart.tsx ~ line 38 ~ addShoesCart ~ amount", amount)
 
-            
+            const amount = currentAmount + 1;
 
             if (amount > stockAmount) {
                 console.log('Quantidade solicitada fora de estoque');
                 return;
+            }
+
+            if (shoeExists) {
+                shoeExists.amount = amount;
             } else {
                 const shoe = await api.get(`shoes/${shoesId}`).then(response => {
                     return response.data[0];
@@ -62,11 +70,12 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
                 updateCart.push(newShoes);
 
+                
             }
-
             setCart(updateCart);
 
-            console.log(cart)
+            localStorage.setItem('@PumaShoes:cart', JSON.stringify(updateCart));
+
         } catch {
             console.log('erro')
         }

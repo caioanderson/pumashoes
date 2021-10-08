@@ -10,11 +10,22 @@ import arte from '../assets/arte1.png';
 import arte2 from '../assets/arte2.png';
 import carrinho from '../assets/carrinho-branco.png';
 
+
+interface CartItemsAmount {
+    [key: number]: number;
+  }
+
 export function Home() {
 
-    const { addShoesCart } = useCart();
+    const { cart, addShoesCart } = useCart();
 
     const [shoes, setShoes] = useState<Shoe[]>([]);
+
+    const cartItemsAmount = cart.reduce((sumAmount, shoe) => {
+        const newSumAmount = { ...sumAmount };
+        newSumAmount[shoe.id] = shoe.amount;
+        return newSumAmount;
+    }, {} as CartItemsAmount)
 
     function handleAddShoe(id : number){
         addShoesCart(id);
@@ -58,7 +69,7 @@ export function Home() {
                                 <div className="cart">
                                     <img src={carrinho} alt="Carrinho de compras" />
 
-                                    0
+                                    { cartItemsAmount[shoe.id] || 0 }
 
                                 </div>
 
