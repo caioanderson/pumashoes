@@ -5,6 +5,16 @@ export const Container = styled.footer`
 
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-right: 1rem;
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    img{ 
+        height: 40px;
+        width: 150px;
+    }
 
 `;

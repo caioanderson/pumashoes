@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Container } from './styles';
-import { api } from '../services/api';
-import { useCart } from '../hooks/useCart';
+import { api } from '../../services/api';
+import { useCart } from '../../hooks/useCart';
 
-import { formatPrice } from '../utils/format';
-import { Shoe } from '../types';
+import { formatPrice } from '../../utils/format';
+import { Shoe } from '../../types';
 
-import arte from '../assets/arte1.png';
-import arte2 from '../assets/arte2.png';
-import carrinho from '../assets/carrinho-branco.png';
+import arte from '../../assets/arte1.png';
+import arte2 from '../../assets/arte2.png';
+import carrinho from '../../assets/carrinho-branco.png';
 
 
 interface CartItemsAmount {
@@ -73,6 +73,7 @@ export function Home() {
 
                                 </div>
 
+                                
                                 <div className="add-cart">
                                     Adicionar ao carrinho
                                 </div>

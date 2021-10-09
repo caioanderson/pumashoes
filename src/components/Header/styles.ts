@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.header`
     display: flex;
@@ -10,19 +11,10 @@ export const Container = styled.header`
     padding: 0 4.25rem; //68px
     
     height: 20vh;
-
-    button{
-        border: 0;
-        margin: 0 6.25rem;
-        background: var(--background-header);
-       
-
-        display: flex;
-        align-items: center;
-
-        span{
-            font-size: 1.5rem; //24px
-            margin: 0 0.313rem 0 0; //5px right
+    
+    span{
+        font-size: 1.5rem; //24px
+        margin: 0 0.313rem 0 0; //5px right
         }
 
         .cart{
@@ -37,6 +29,11 @@ export const Container = styled.header`
                 color: var(--text-subtitle);
             }
         }
-    }
 
+`
+
+export const Cart = styled(Link)`
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 `
