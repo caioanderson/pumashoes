@@ -10,11 +10,11 @@ export const Container = styled.footer`
 
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 98%;
 
     img{ 
         height: 40px;
-        width: 150px;
+        width: 40px;
     }
 
 `;

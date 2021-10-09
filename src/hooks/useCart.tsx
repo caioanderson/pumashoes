@@ -5,14 +5,20 @@ import { Shoe } from '../types';
 interface CartContextData {
     cart: Shoe[];
     addShoesCart: (shoesId: number) => Promise<void>;
-
+    removeShoes: (shoesId: number) => void;
+    updateShoesAmount: ({ shoeId, amount }: updateShoeAmount) => void;
 }
-const CartContext = createContext<CartContextData>({} as CartContextData);
-
 interface CartProviderProps {
     children: ReactNode;
 
 }
+
+interface updateShoeAmount {
+    shoeId: number;
+    amount: number;
+}
+
+const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
@@ -70,7 +76,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
                 updateCart.push(newShoes);
 
-                
+
             }
             setCart(updateCart);
 
@@ -81,9 +87,52 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     }
 
+    async function removeShoes(shoesId: number) {
+
+        const updateCart = [...cart];
+        const shoeIndex = updateCart.findIndex(shoe => shoe.id === shoesId);
+
+        if (shoeIndex >= 0) {
+            updateCart.splice(shoeIndex, 1);
+            setCart(updateCart);
+            localStorage.setItem('@PumaShoes:cart', JSON.stringify(updateCart));
+        } else {
+            throw Error();
+        }
+    }
+
+    async function updateShoesAmount({ shoeId, amount }: updateShoeAmount) {
+        if (amount <= 0) {
+            return;
+        }
+
+        const stock = await api.get(`stock/${shoeId}`).then(response => {
+            const { amount } = response.data[0];
+            return amount;
+        })
+
+        const stockAmount = stock;
+
+        if (amount > stockAmount) {
+            return;
+        }
+
+        const updateCart = [...cart];
+        const shoeExists = updateCart.find(shoe => shoe.id === shoeId);
+
+        if(shoeExists) {
+            shoeExists.amount = amount;
+            setCart(updateCart);
+            localStorage.setItem('@PumaShoes:cart', JSON.stringify(updateCart));
+        }else{
+            throw Error();
+        }
+
+    }
+
 
     return (
-        <CartContext.Provider value={{ cart, addShoesCart }}>
+        <CartContext.Provider value={{ cart, addShoesCart, removeShoes, updateShoesAmount }}>
             {children}
         </CartContext.Provider>
     );

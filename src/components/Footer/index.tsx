@@ -1,12 +1,17 @@
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
-import socials from '../../assets/socials.png';
+import instagram from '../../assets/logo-instagram.png';
 
 export function Footer() {
     return (
         <Container>
             <div />
-            <img src={socials} alt="Redes sociais" />
-        </Container>
+
+            <Link to={{ pathname: 'https://www.instagram.com/puma/' }} target="_blank" >
+                <img src={instagram} alt="Instagram" />
+            </Link>
+
+        </Container >
     );
 }

@@ -6,25 +6,29 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     padding: 30px;
     
     background: #fff;
     border-radius: 4px;
 
-    height: 100vh;
+    height: 80vh;
 
-    footer {
-    width: 50%;
-    margin-top: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    section {
+      width: 60%;
+      margin-left: 300px;
+      height: 30%;
+      margin-top: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
     button {
       background: var(--orange);
       color: #fff;
       border: 0;
+      /* margin-bottom: 100px; */
       border-radius: 4px;
       padding: 12px 20px;
       font-weight: bold;
@@ -48,26 +52,32 @@ export const ShoesTable = styled.table`
     text-align: left;
     padding: 12px;
   }
+
   tbody td {
     padding: 12px;
     border-bottom: 1px solid #eee;
   }
+
   img {
     height: 100px;
   }
+
   strong {
     color: #333;
     display: block;
   }
+
   span {
     display: block;
     margin-top: 5px;
     font-size: 18px;
     font-weight: bold;
   }
+
   div {
     display: flex;
     align-items: center;
+
     input {
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -75,23 +85,28 @@ export const ShoesTable = styled.table`
       padding: 6px;
       width: 50px;
     }
+
   }
+
   button {
     background: none;
     border: 0;
     padding: 6px;
+
     svg {
-      color: #7159c1;
+      color: var(--orange);
       transition: color 0.2s;
     }
+
     &:hover {
       svg {
-        color: ${darken(0.06, '#7159c1')};
+        color: ${darken(0.06, '#CD4834')};
       }
     }
+
     &:disabled {
       svg {
-        color: ${lighten(0.25, '#7159c1')};
+        color: ${lighten(0.25, '#CD4834')};
         cursor: not-allowed;
       }
     }
