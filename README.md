@@ -43,7 +43,7 @@ Este projeto tem como foco a construção de um carrinho de compras com uma fake
 Clone o projeto e acesse a pasta do mesmo.
   
 ```bash
-$ git clone https://github.com/CaioAnderson/pumashoes.git
+$ git clone https://github.com/caioanderson/pumashoes.git
 $ cd pumashoes
 ```
 
