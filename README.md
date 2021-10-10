@@ -10,7 +10,6 @@
 <p align="center">
 <img src=".github/video.gif" width="900"/>
 </p
-  
 <br>
   
 ## ✨ Tecnologias
