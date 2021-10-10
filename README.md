@@ -28,10 +28,13 @@ Este projeto tem como foco a construção de um carrinho de compras com uma fake
   
 ## 🔗 Funcionalidades
   
-- Adicionar tênis no carrinho de compras
-- Remover tênis do carrinho de compras
-- Editar quantidade de tênis do carrinho de compras
-- Consultar qauntidades de itens no carrinho de compras
+- Adicionar tênis no carrinho de compras.
+- Remover tênis do carrinho de compras.
+- Editar quantidade de tênis do carrinho de compras.
+- Consultar quantidades de itens no carrinho de compras.
+- Consultar todos os produtos da API.
+- Calcular subtotal de cada produto no carrinho.
+- Calcular preço total do carrinho.
   
 ## 🚀 Como executar
   
@@ -50,7 +53,7 @@ Para iniciá-lo, siga os passos abaixo:
 $ yarn
 
 # Iniciar o projeto
-$ yarn dev
+$ yarn start
 ```
 
 
