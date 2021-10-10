@@ -36,6 +36,8 @@ Este projeto tem como foco a construção de um carrinho de compras com uma fake
 ## 🚀 Como executar
 
 Clone o projeto e acesse a pasta do mesmo.
+  
+- Siga [esse protótipo](https://www.figma.com/file/dDGYbXdZYgYqpauGSiBxJ6/Vision-Store-Puma?node-id=0%3A1)
 
 ```bash
 $ git clone https://github.com/CaioAnderson/pumashoes.git
